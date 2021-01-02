@@ -72,3 +72,31 @@ check_super_stacks <- function(stack_rows){
 
   return(super_stacks)
 }
+
+# ---- To develop / test ----
+t <- parse_grid(
+  "a b c",
+  "a d e",
+  "f d g",
+  "h i g",
+  "j k l",
+  "j m n",
+  "o m p"
+)
+
+ts <- check_stacks(t)
+
+# problem, when you run check_super_stacks on ts, the functions needs to be run
+# again to identify to new super stacks. This process needs to be run iteratively
+
+# solution
+# At the end of check_super_stacks, just check if stacked_elements share letters,
+# if they do, combine into one super stack.
+# Whats happens if free super stacks share letters but different ones, e.g.,
+# "a-b", "b-c", and "c-d"? Perhaps when joining stacks and finding min and max
+# Row numbers, grow the stacked_elements by including all the letters, e.g.,
+# after joining "a-b", and "b-c", store that as an intermediary variable called
+# "a-b-c". This can be the matched to "c-d". The order doesn't matter.
+# Questions: duplicates are removed in check_stack(), is this going to mean
+# some stacked_elements are missed using this strategy?
+
