@@ -160,6 +160,21 @@ its_nc <- rows_not_covered_by_stacks(rows_covered = its_c, t)
 
 append_single_rows(its_nc, current_stack = its)
 
+t <- parse_grid(
+  "a b c c",
+  "d d c c"
+)
+
+ts <- check_stacks(t)
+
+its <- iterate_stacks(ts)
+
+its_c <- rows_covered_by_stacks(its)
+
+its_nc <- rows_not_covered_by_stacks(rows_covered = its_c, t)
+
+append_single_rows(its_nc, current_stack = its)
+
 # One huge super stack
 v <- parse_grid(
   "a b c v",
@@ -202,5 +217,3 @@ append_single_rows(ivs_nc, current_stack = ivs)
 # "a a d e"
 # "f g g e"
 # Column super stack of a-a-g-g and row super stack of a-a-e-e?
-
-
